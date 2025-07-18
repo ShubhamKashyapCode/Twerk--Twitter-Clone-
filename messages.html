@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages - Twerk</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff;
+      height: 100vh;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar h2 {
+      color: #1da1f2;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 15px 0;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #1da1f2;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .content h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .chat-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .chat-box:hover {
+      background-color: #eef6fc;
+    }
+
+    .chat-box img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .chat-details {
+      flex: 1;
+    }
+
+    .chat-details h4 {
+      margin: 0;
+      font-size: 16px;
+      color: #1da1f2;
+    }
+
+    .chat-details p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .chat-time {
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Twerk</h2>
+    <a href="main.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="messages.html" class="active"><strong>Messages</strong></a>
+    <a href="bookmarks.html">Bookmarks</a>
+    <a href="lists.html">Lists</a>
+    <a href="profile.html">Profile</a>
+    <a href="more.html">More</a>
+  </div>
+
+  <div class="content">
+    <h1>Messages</h1>
+
+    <div class="chat-box">
+      <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="User">
+      <div class="chat-details">
+        <h4>@techguru</h4>
+        <p>Hey, saw your latest Twerk. Loved it!</p>
+      </div>
+      <div class="chat-time">5m</div>
+    </div>
+
+    <div class="chat-box">
+      <img src="https://randomuser.me/api/portraits/women/61.jpg" alt="User">
+      <div class="chat-details">
+        <h4>@globetrotter</h4>
+        <p>Let’s collab on a travel post?</p>
+      </div>
+      <div class="chat-time">22m</div>
+    </div>
+
+    <div class="chat-box">
+      <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="User">
+      <div class="chat-details">
+        <h4>@codeboss</h4>
+        <p>Check out this new dev tool 🔧</p>
+      </div>
+      <div class="chat-time">1h</div>
+    </div>
+
+    <div class="chat-box">
+      <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="User">
+      <div class="chat-details">
+        <h4>@startupqueen</h4>
+        <p>Meeting postponed to tomorrow 🙌</p>
+      </div>
+      <div class="chat-time">3h</div>
+    </div>
+  </div>
+</body>
+</html>

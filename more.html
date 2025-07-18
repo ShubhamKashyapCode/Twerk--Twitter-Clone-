@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>More - Twerk</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff;
+      height: 100vh;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar h2 {
+      color: #1da1f2;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 15px 0;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #1da1f2;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .content h1 {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    .settings-item {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .settings-item:hover {
+      background-color: #eef6fc;
+    }
+
+    .settings-item h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #1da1f2;
+    }
+
+    .settings-item p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Twerk</h2>
+    <a href="main.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="messages.html">Messages</a>
+    <a href="bookmarks.html">Bookmarks</a>
+    <a href="lists.html">Lists</a>
+    <a href="profile.html">Profile</a>
+    <a href="more.html" class="active"><strong>More</strong></a>
+  </div>
+
+  <div class="content">
+    <h1>More Options</h1>
+
+    <div class="settings-item">
+      <h3>Settings & Privacy</h3>
+      <p>Update your account settings and privacy preferences.</p>
+    </div>
+
+    <div class="settings-item">
+      <h3>Analytics</h3>
+      <p>See how your profile and posts are performing.</p>
+    </div>
+
+    <div class="settings-item">
+      <h3>Help Center</h3>
+      <p>Get support or report a problem.</p>
+    </div>
+
+    <div class="settings-item">
+      <h3>Dark Mode</h3>
+      <p>Switch between light and dark themes.</p>
+    </div>
+
+    <div class="settings-item">
+      <h3>Logout</h3>
+      <p>Sign out from your Twerk account.</p>
+    </div>
+  </div>
+</body>
+</html>

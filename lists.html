@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lists - Twerk</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff;
+      height: 100vh;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar h2 {
+      color: #1da1f2;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 15px 0;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #1da1f2;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .content h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .list-card {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .list-card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #1da1f2;
+    }
+
+    .list-card p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .list-meta {
+      font-size: 13px;
+      color: #999;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Twerk</h2>
+    <a href="main.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="messages.html">Messages</a>
+    <a href="bookmarks.html">Bookmarks</a>
+    <a href="lists.html" class="active"><strong>Lists</strong></a>
+    <a href="profile.html">Profile</a>
+    <a href="more.html">More</a>
+  </div>
+
+  <div class="content">
+    <h1>Your Lists</h1>
+
+    <div class="list-card">
+      <h3>🧠 Tech Innovators</h3>
+      <p>Stay updated with the latest thoughts from the smartest minds in tech.</p>
+      <div class="list-meta">12 Members · Last updated 1h ago</div>
+    </div>
+
+    <div class="list-card">
+      <h3>🌍 Travel Influencers</h3>
+      <p>All your favorite travel bloggers in one place.</p>
+      <div class="list-meta">8 Members · Last updated 3d ago</div>
+    </div>
+
+    <div class="list-card">
+      <h3>🎧 Music Creators</h3>
+      <p>Follow and support indie artists and producers worldwide.</p>
+      <div class="list-meta">17 Members · Last updated last week</div>
+    </div>
+  </div>
+</body>
+</html>

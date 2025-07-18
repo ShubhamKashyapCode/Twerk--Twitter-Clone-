@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twerk - Share Your Thoughts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1DA1F2;
+            --secondary-color: #14171A;
+            --accent-color: #E1E8ED;
+            --text-color: #657786;
+            --background-color: #F5F8FA;
+            --white: #FFFFFF;
+            --dark-gray: #2C3E50;
+            --like-color: #E0245E;
+            --retwerk-color: #17BF63;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+            background-color: var(--white);
+            border-right: 1px solid var(--accent-color);
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: 30px;
+            flex: 1;
+        }
+
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(29, 161, 242, 0.1);
+            color: var(--primary-color);
+        }
+
+        .nav-links a i {
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .twerk-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 0;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .twerk-btn:hover {
+            background-color: #1A91DA;
+        }
+
+        .user-profile {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .user-profile:hover {
+            background-color: rgba(29, 161, 242, 0.1);
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .user-handle {
+            color: var(--text-color);
+            font-size: 12px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 290px;
+            flex: 1;
+            max-width: 700px;
+            border-right: 1px solid var(--accent-color);
+        }
+
+        .header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .trends {
+            width: 350px;
+            padding: 20px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .trends h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .trend-item {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .trend-category {
+            color: var(--text-color);
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .trend-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .trend-tweets {
+            color: var(--text-color);
+            font-size: 12px;
+        }
+
+        .who-to-follow {
+            margin-top: 30px;
+        }
+
+        .follow-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .follow-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .follow-info {
+            flex: 1;
+        }
+
+        .follow-name {
+            font-weight: 600;
+        }
+
+        .follow-handle {
+            color: var(--text-color);
+            font-size: 12px;
+        }
+
+        .follow-btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            padding: 5px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .follow-btn:hover {
+            background-color: #3D5666;
+        }
+
+        /* Tweet Styles */
+        .tweet-box {
+            padding: 20px;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .tweet-form {
+            display: flex;
+        }
+
+        .tweet-avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .tweet-input {
+            flex: 1;
+        }
+
+        .tweet-input textarea {
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            resize: none;
+            min-height: 50px;
+            padding: 10px 0;
+            outline: none;
+        }
+
+        .tweet-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--accent-color);
+        }
+
+        .tweet-icons {
+            display: flex;
+        }
+
+        .tweet-icons i {
+            color: var(--primary-color);
+            margin-right: 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .tweet-submit {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .tweet-submit:hover {
+            background-color: #1A91DA;
+        }
+
+        .tweet-submit.active {
+            opacity: 1;
+        }
+
+        .tweets {
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .tweet {
+            display: flex;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--accent-color);
+            transition: background-color 0.2s ease;
+        }
+
+        .tweet:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .tweet-avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .tweet-content {
+            flex: 1;
+        }
+
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .tweet-name {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .tweet-handle, .tweet-time {
+            color: var(--text-color);
+            margin-right: 5px;
+            font-size: 14px;
+        }
+
+        .tweet-text {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .tweet-image {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .tweet-image img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .tweet-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .twerk-post-image {
+            object-fit: cover;
+            max-height: 600px;
+            cursor: pointer;
+        }
+
+        .tweet-actions {
+            display: flex;
+            justify-content: space-between;
+            max-width: 400px;
+            margin-top: 10px;
+        }
+
+        .tweet-action {
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .tweet-action i {
+            margin-right: 5px;
+            font-size: 16px;
+        }
+
+        .tweet-action.comment:hover {
+            color: var(--primary-color);
+        }
+
+        .tweet-action.retwerk:hover {
+            color: var(--retwerk-color);
+        }
+
+        .tweet-action.like:hover {
+            color: var(--like-color);
+        }
+
+        .tweet-action.like.active {
+            color: var(--like-color);
+        }
+
+        .tweet-action.retwerk.active {
+            color: var(--retwerk-color);
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .trends {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 80px;
+                padding: 15px 10px;
+                align-items: center;
+            }
+            .logo span {
+                display: none;
+            }
+            .logo img {
+                margin-right: 0;
+            }
+            .nav-links a span {
+                display: none;
+            }
+            .nav-links a i {
+                margin-right: 0;
+                font-size: 24px;
+            }
+            .twerk-btn {
+                padding: 10px;
+                width: auto;
+            }
+            .twerk-btn span {
+                display: none;
+            }
+            .user-profile .user-info {
+                display: none;
+            }
+            .user-profile img {
+                margin-right: 0;
+            }
+            .main-content {
+                margin-left: 80px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 30px; height: 30px;"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#1DA1F2"></path></g></svg>
+            <span>Twerk</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="./main.html" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="./explore.html"><i class="fas fa-search"></i><span>Explore</span></a></li>
+            <li><a href="./notifications.html"><i class="fas fa-bell"></i><span>Notifications</span></a></li>
+            <li><a href="./messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a></li>
+            <li><a href="./bookmarks.html"><i class="fas fa-bookmark"></i><span>Bookmarks</span></a></li>
+            <li><a href="./lists.html"><i class="fas fa-list-alt"></i><span>Lists</span></a></li>
+            <li><a href="./profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+            <li><a href="./more.html"><i class="fas fa-ellipsis-h"></i><span>More</span></a></li>
+        </ul>
+        <button class="twerk-btn">Twerk</button>
+        <div class="user-profile">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ae68b53-bcef-46ec-9f2a-ec33478ebe97.png" alt="Twerk user profile photo">
+            <div class="user-info">
+                <span class="user-name">Shubham Kashyap</span>
+                <span class="user-handle">@shubhamkashyap</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Home</h1>
+        </div>
+        
+        <div class="tweet-box">
+            <form class="tweet-form" id="tweet-form">
+                <div class="tweet-avatar">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ae68b53-bcef-46ec-9f2a-ec33478ebe97.png" alt="User profile photo">
+                </div>
+                <div class="tweet-input">
+                    <textarea id="tweet-text" placeholder="What's happening?" maxlength="280"></textarea>
+                    <div class="tweet-actions">
+                        <div class="tweet-icons">
+                            <i class="fas fa-image" title="Add image"></i>
+                            <i class="fas fa-grin" title="Add emoji"></i>
+                            <i class="fas fa-poll" title="Add poll"></i>
+                            <i class="fas fa-map-marker-alt" title="Add location"></i>
+                        </div>
+                        <button type="submit" class="tweet-submit" id="tweet-submit">Twerk</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="tweets" id="tweets-container">
+            <!-- Sample tweets will be loaded here -->
+        </div>
+    </div>
+
+    <div class="trends">
+        <div class="trends-section">
+            <h2>What's happening</h2>
+            <div class="trend-item">
+                <div class="trend-category">Trending in Technology</div>
+                <div class="trend-name">#WebDevelopment</div>
+                <div class="trend-tweets">15.2K Twerks</div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-category">Trending in Business</div>
+                <div class="trend-name">#StartupLife</div>
+                <div class="trend-tweets">24.5K Twerks</div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-category">Politics · Trending</div>
+                <div class="trend-name">ClimateChange</div>
+                <div class="trend-tweets">156K Twerks</div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-category">Entertainment · Trending</div>
+                <div class="trend-name">#NewMovie</div>
+                <div class="trend-tweets">89.7K Twerks</div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-category">Sports · Trending</div>
+                <div class="trend-name">#ChampionsLeague</div>
+                <div class="trend-tweets">112.3K Twerks</div>
+            </div>
+            <a href="#" style="color: var(--primary-color); font-size: 14px;">Show more</a>
+        </div>
+        
+        <div class="who-to-follow">
+            <h2>Who to follow</h2>
+            <div class="follow-item">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/372bb297-0c09-47f0-a9a9-6738609ca88b.png" alt="Tech influencer profile">
+                <div class="follow-info">
+                    <div class="follow-name">Tech Guru</div>
+                    <div class="follow-handle">@techguru</div>
+                </div>
+                <button class="follow-btn">Follow</button>
+            </div>
+            <div class="follow-item">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3bc64c9c-f3de-45fc-857e-e3d8c1ddfcde.png" alt="News profile">
+                <div class="follow-info">
+                    <div class="follow-name">World News</div>
+                    <div class="follow-handle">@worldnews</div>
+                </div>
+                <button class="follow-btn">Follow</button>
+            </div>
+            <div class="follow-item">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/916b148f-9540-4188-98a0-7d7525f839b6.png" alt="Music artist profile">
+                <div class="follow-info">
+                    <div class="follow-name">Music Star</div>
+                    <div class="follow-handle">@musicstar</div>
+                </div>
+                <button class="follow-btn">Follow</button>
+            </div>
+            <a href="#" style="color: var(--primary-color); font-size: 14px;">Show more</a>
+        </div>
+    </div>
+
+    <script>
+        // Sample tweets data
+        const tweets = [
+            {
+                id: 1,
+                name: "Tech Enthusiast",
+                handle: "@techie",
+                avatar: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/210c8042-f45d-45e8-a309-8b1af5275cc9.png",
+                text: "Just deployed my new website! Check it out at example.com #webdev",
+                time: "2h",
+                likes: 24,
+                comments: 5,
+                retwerks: 3,
+                liked: false,
+                retwerked: false
+            },
+            {
+                id: 2,
+                name: "Travel Blogger",
+                handle: "@globetrotter",
+                avatar: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/58ed431f-bd16-4464-a483-e43532c7ac47.png",
+                text: "Beautiful sunrise at the beach this morning! Nature never disappoints. 🌅 #travel #nature",
+                time: "5h",
+                likes: 156,
+                comments: 23,
+                retwerks: 42,
+                liked: true,
+                retwerked: false,
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6bd8f593-57b3-4d98-862e-9ab9190e0f1b.png"
+            },
+            {
+                id: 3,
+                name: "Finance Expert",
+                handle: "@moneymatters",
+                avatar: "https://placehold.co/50x50",
+                text: "The stock market is showing interesting trends this quarter. Time to review your portfolios!",
+                time: "1d",
+                likes: 89,
+                comments: 17,
+                retwerks: 12,
+                liked: false,
+                retwerked: true
+            }
+        ];
+
+        // DOM Elements
+        const tweetForm = document.getElementById('tweet-form');
+        const tweetText = document.getElementById('tweet-text');
+        const tweetSubmit = document.getElementById('tweet-submit');
+        const tweetsContainer = document.getElementById('tweets-container');
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTweets();
+        });
+
+        // Render tweets
+        function renderTweets() {
+            tweetsContainer.innerHTML = '';
+            tweets.forEach(tweet => {
+                const tweetElement = createTweetElement(tweet);
+                tweetsContainer.appendChild(tweetElement);
+            });
+        }
+
+        // Create tweet element
+        function createTweetElement(tweet) {
+            const tweetElement = document.createElement('div');
+            tweetElement.className = 'tweet';
+            tweetElement.dataset.id = tweet.id;
+
+            let imageHTML = '';
+            if (tweet.image) {
+                imageHTML = `
+                <div class="tweet-image">
+                    <img src="${tweet.image}" alt="Twerk post photo" class="twerk-post-image">
+                </div>
+                `;
+            }
+
+            tweetElement.innerHTML = `
+                <div class="tweet-avatar">
+                    <img src="${tweet.avatar}" alt="User avatar">
+                </div>
+                <div class="tweet-content">
+                    <div class="tweet-header">
+                        <div class="tweet-name">${tweet.name}</div>
+                        <div class="tweet-handle">${tweet.handle}</div>
+                        <div class="tweet-time">· ${tweet.time}</div>
+                    </div>
+                    <div class="tweet-text">${tweet.text}</div>
+                    ${imageHTML}
+                    <div class="tweet-actions">
+                        <div class="tweet-action comment">
+                            <i class="far fa-comment"></i>
+                            <span>${tweet.comments}</span>
+                        </div>
+                        <div class="tweet-action retwerk ${tweet.retwerked ? 'active' : ''}">
+                            <i class="fas fa-retweet"></i>
+                            <span>${tweet.retwerks}</span>
+                        </div>
+                        <div class="tweet-action like ${tweet.liked ? 'active' : ''}">
+                            <i class="far fa-heart"></i>
+                            <span>${tweet.likes}</span>
+                        </div>
+                        <div class="tweet-action share">
+                            <i class="fas fa-share"></i>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add event listeners
+            const likeBtn = tweetElement.querySelector('.like');
+            likeBtn.addEventListener('click', () => toggleLike(tweet.id));
+
+            const retwerkBtn = tweetElement.querySelector('.retwerk');
+            retwerkBtn.addEventListener('click', () => toggleRetwerk(tweet.id));
+
+            return tweetElement;
+        }
+
+        // Toggle like
+        function toggleLike(tweetId) {
+            const tweet = tweets.find(t => t.id === tweetId);
+            if (tweet) {
+                tweet.liked = !tweet.liked;
+                tweet.likes += tweet.liked ? 1 : -1;
+                renderTweets();
+            }
+        }
+
+        // Toggle retwerk
+        function toggleRetwerk(tweetId) {
+            const tweet = tweets.find(t => t.id === tweetId);
+            if (tweet) {
+                tweet.retwerked = !tweet.retwerked;
+                tweet.retwerks += tweet.retwerked ? 1 : -1;
+                renderTweets();
+            }
+        }
+
+        // Handle tweet submission
+        tweetForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = tweetText.value.trim();
+            
+            if (text) {
+                const newTweet = {
+                    id: tweets.length + 1,
+                    name: "Shubham Kashyap",
+                    handle: "@shubhamkashyap",
+                    avatar: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ae68b53-bcef-46ec-9f2a-ec33478ebe97.png",
+                    text: text,
+                    time: "now",
+                    likes: 0,
+                    comments: 0,
+                    retwerks: 0,
+                    liked: false,
+                    retwerked: false
+                };
+                
+                tweets.unshift(newTweet);
+                renderTweets();
+                tweetText.value = '';
+                tweetSubmit.classList.remove('active');
+            }
+        });
+
+        // Enable/disable submit button based on input
+        tweetText.addEventListener('input', () => {
+            tweetSubmit.classList.toggle('active', tweetText.value.trim().length > 0);
+        });
+
+        // Follow button functionality
+        document.querySelectorAll('.follow-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.textContent = this.textContent === 'Follow' ? 'Following' : 'Follow';
+            });
+        });
+    </script>
+</body>
+</html>
